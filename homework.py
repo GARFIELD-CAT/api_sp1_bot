@@ -49,10 +49,10 @@ def send_message(message, bot_client):
 
 
 def main():
-    # проинициализировать бота здесь
+    # Проинициализировать бота здесь.
     bot_client = Bot(token=TELEGRAM_TOKEN)
     logging.debug('Бот запущен.')
-    current_timestamp = int(time.time())  # начальное значение timestamp
+    current_timestamp = int(time.time())  # Начальное значение timestamp.
 
     while True:
         try:
@@ -60,7 +60,7 @@ def main():
             if new_homework.get('homeworks'):
                 send_message(parse_homework_status(new_homework.get('homeworks')[0]), bot_client)
             current_timestamp = new_homework.get('current_date', current_timestamp)  # обновить timestamp
-            time.sleep(300)  # опрашивать раз в пять минут
+            time.sleep(600)  # Опрашивать раз в десять минут.
 
         except Exception as e:
             text = f'Бот столкнулся с ошибкой: {e}'
